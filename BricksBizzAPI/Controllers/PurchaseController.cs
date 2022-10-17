@@ -14,21 +14,15 @@ namespace BricksBizzAPI.Controllers
         public IProductionComponent _productionComponent;
         public PurchaseController(IProductionComponent productionComponent)
         {
-            this._productionComponent = productionComponent;
+            _productionComponent = productionComponent;
         }
 
-       
-        [HttpGet(Name = "GetProducts")]
-        public ProductModel GetAllProducts()
+        [HttpGet]
+        [Route("getallproduct")]
+        public async Task<IActionResult> GetAllProducts()
         {
-            ProductModel model = new ProductModel();
-            model.ProductList = _productionComponent.GetAllProduct();
-            return model;
-        }
-
-        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAllProduct()
-        {
-            return await Task.FromResult(_productionComponent.GetAllProduct());
+            var result = _productionComponent.GetAllProduct();
+            return Ok(result);
         }
     }
 }
