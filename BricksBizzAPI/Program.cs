@@ -14,8 +14,7 @@ builder.Services.AddCors(x =>
 {
     x.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()); 
 });
-
-builder.Services.AddScoped<IProductionComponent,ProductionComponent>();
+builder.Services.AddTransient<IProductionRepository,ProductionRepository>();
 builder.Services.AddScoped<ISalesDashboardRepository, SalesDashboardRepository>();
 builder.Services.AddScoped<IPurchaseRepository,PurchaseRepository>();
 builder.Services.AddScoped<IWorkerRepository,WorkerRepository>();

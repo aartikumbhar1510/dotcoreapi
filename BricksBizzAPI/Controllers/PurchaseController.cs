@@ -11,18 +11,19 @@ namespace BricksBizzAPI.Controllers
     [ApiController]
     public class PurchaseController : ControllerBase
     {
-        public IProductionComponent _productionComponent;
-        public PurchaseController(IProductionComponent productionComponent)
+        public IProductionRepository _productionRepository;
+        public PurchaseController(IProductionRepository productionRepository)
         {
-            _productionComponent = productionComponent;
+            _productionRepository = productionRepository;
         }
 
         [HttpGet]
         [Route("getallproduct")]
-        public async Task<IActionResult> GetAllProducts()
+        public async Task<CustomeResponse> GetAllProducts()
         {
-            var result = _productionComponent.GetAllProduct();
-            return Ok(result);
+            CustomeResponse response = new CustomeResponse();
+            response.Response = await _productionRepository.GetAllProduct();
+            return response;
         }
     }
 }

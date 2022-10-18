@@ -4,7 +4,7 @@ namespace BricksBizzAPI.Repository
 {
     public class ProductionRepository : IProductionRepository
     {
-        public List<ProductDTO> GetAllProduct()
+        public async Task<List<ProductDTO>> GetAllProduct()
         {
             
 
@@ -24,9 +24,9 @@ namespace BricksBizzAPI.Repository
                 qty = 10
             };
             products.Add(product);
-            products.Add(product1);
+             products.Add(product1);
 
-            return products;
+            return  products;
         }
     }
 }

@@ -4,6 +4,6 @@ namespace BricksBizzAPI.Repository
 {
     public interface IProductionRepository
     {
-        public List<ProductDTO> GetAllProduct();
+        Task<List<ProductDTO>> GetAllProduct();
     }
 }
