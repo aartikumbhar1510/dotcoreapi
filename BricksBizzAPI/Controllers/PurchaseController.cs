@@ -25,5 +25,14 @@ namespace BricksBizzAPI.Controllers
             response.Response = await _productionRepository.GetAllProduct();
             return response;
         }
+
+        [HttpGet]
+        [Route("getproductbyid")]
+        public async Task<CustomeResponse> GetProductByOrderId(int OrderId)
+        {
+            CustomeResponse response = new CustomeResponse();
+             response.Response = await _productionRepository.GetProductByCode(OrderId);
+            return response;
+        }
     }
 }

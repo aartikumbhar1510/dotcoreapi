@@ -28,5 +28,15 @@ namespace BricksBizzAPI.Repository
 
             return  products;
         }
+
+        public async Task<ProductDTO> GetProductByCode(int OrderId)
+        {
+            List<ProductDTO> products = new List<ProductDTO>();
+            ProductDTO product = new ProductDTO();
+            products = await GetAllProduct();
+
+            product = products.Where(x => x.OrderId == OrderId).FirstOrDefault();
+            return product;
+        }
     }
 }
